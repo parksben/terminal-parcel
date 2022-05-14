@@ -1,0 +1,27 @@
+{
+  "name": "terminal-parcel",
+  "version": "0.0.1",
+  "description": "A library for implementing Node.js CLI tools and automation scripts efficiently and quickly which provides a variety of utility methods and syntactic sugar.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "cti create -b ./src && rimraf dist/* && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js CLI utils",
+    "making pretty terminal program"
+  ],
+  "author": "parksben",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "rimraf": "^3.0.2",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "create-ts-index": "^1.14.0"
+  }
+}

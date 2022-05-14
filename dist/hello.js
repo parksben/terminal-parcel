@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.dir = exports.y = exports.x = void 0;
+var path = require("path");
+var dir = path.resolve(__dirname, "..");
+exports.dir = dir;
+var x = {};
+exports.x = x;
+var y = Object.assign(x, { b: 3524 });
+exports.y = y;
