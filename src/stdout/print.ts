@@ -1,7 +1,10 @@
 import parseSyntax from './parseSyntax';
 import { fromRecord } from './table';
 
-export default function print(text: string, useSyntax?: boolean) {
+export default function print(
+  text: string | Record<string, string>,
+  useSyntax?: boolean
+) {
   let output = text;
 
   if (typeof text === 'object' && Object.keys(text).length) {
