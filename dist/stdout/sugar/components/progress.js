@@ -1,24 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var safe_1 = require("colors/safe");
-// 进度条组件
 exports.default = {
     tag: 'progress',
     interpreter: function (props) {
         var value = parseValue(props.value);
         var width = Number(props.width) || 50;
         var cellNum = Math.round(width * value);
-        // 拼接黑色条
+        // complete
         var cell = '';
         for (var i = 0; i < cellNum; i++) {
             cell += '█';
         }
-        // 拼接灰色条
+        // incomplete
         var empty = '';
         for (var i = 0; i < width - cellNum; i++) {
             empty += '░';
         }
-        // 进度提示文案
+        // description
         var text = '';
         var pattFraction = /^([\d.]+)\/([\d.]+)$/;
         if (pattFraction.test(props.value)) {
@@ -31,7 +30,6 @@ exports.default = {
         return "".concat(cell).concat(empty, " ").concat((0, safe_1.cyan)(text));
     },
 };
-// 解析进度值
 function parseValue(str) {
     var result = 0;
     var pattFraction = /^([\d.]+)\/([\d.]+)$/;

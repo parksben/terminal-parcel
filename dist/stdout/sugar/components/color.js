@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var colors = require("colors/safe");
-// 颜色组件
 exports.default = {
     tag: 'color',
     interpreter: function (props, children) {

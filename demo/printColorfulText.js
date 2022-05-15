@@ -1,4 +1,4 @@
-const { print } = require('../dist');
+const { print } = require('../dist'); // const { print } = require('terminal-parcel');
 
 print('<color apply="green">outputs green text</color>', true);
 print('<color apply="red.underline">outputs red underlined text</color>', true);

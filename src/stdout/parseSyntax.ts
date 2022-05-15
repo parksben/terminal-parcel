@@ -5,8 +5,8 @@ export default function parseSyntax(text: string) {
 
   try {
     for (const { tag, interpreter } of components) {
-      const patt = new RegExp(`\<${tag}([^>]*?)\>([^<]*?)\<\/${tag}\>`, 'gi');
-      const pattSelfColsing = new RegExp(`\<${tag}([^>]*?)\/\>`, 'gi');
+      const patt = new RegExp(`\<${tag}([^>]*?)>([^<]*?)<\/${tag}>`, 'i');
+      const pattSelfColsing = new RegExp(`<${tag}([^>]*?)\/>`, 'i');
 
       const handler = (
         _match: string,
@@ -16,7 +16,13 @@ export default function parseSyntax(text: string) {
         return interpreter(parseProps(properties), children || '');
       };
 
-      result = result.replace(patt, handler).replace(pattSelfColsing, handler);
+      while (patt.test(result)) {
+        result = result.replace(patt, handler);
+      }
+
+      while (pattSelfColsing.test(result)) {
+        result = result.replace(pattSelfColsing, handler);
+      }
     }
   } catch (e) {
     result = text;

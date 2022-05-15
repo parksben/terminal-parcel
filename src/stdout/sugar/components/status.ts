@@ -10,16 +10,18 @@ const COLOR_MAPPING: Record<string, string> = {
 export default {
   tag: 'status',
   interpreter: (props: Record<string, string>, children: string) => {
-    if (COLOR_MAPPING[props.type]) {
-      const render = new Function(
-        'colors',
-        'text',
-        `return colors.${COLOR_MAPPING[props.type]}(text)`
-      );
+    let colorPath = props.type;
 
-      return render(colors, children);
+    for (const [key, val] of Object.entries(COLOR_MAPPING)) {
+      colorPath = colorPath.replace(key, val);
     }
 
-    return children;
+    const render = new Function(
+      'colors',
+      'text',
+      `return colors.${colorPath}(text)`
+    );
+
+    return render(colors, children);
   },
 };

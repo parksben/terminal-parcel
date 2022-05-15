@@ -1,3 +1,4 @@
 import print from './stdout/print';
 import refresh from './stdout/refresh';
-export { print, refresh };
+import * as table from './stdout/table';
+export { print, refresh, table };

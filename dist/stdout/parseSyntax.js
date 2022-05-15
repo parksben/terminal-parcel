@@ -5,12 +5,17 @@ function parseSyntax(text) {
     var result = text;
     try {
         var _loop_1 = function (tag, interpreter) {
-            var patt = new RegExp("<".concat(tag, "([^>]*?)>([^<]*?)</").concat(tag, ">"), 'gi');
-            var pattSelfColsing = new RegExp("<".concat(tag, "([^>]*?)/>"), 'gi');
+            var patt = new RegExp("<".concat(tag, "([^>]*?)>([^<]*?)</").concat(tag, ">"), 'i');
+            var pattSelfColsing = new RegExp("<".concat(tag, "([^>]*?)/>"), 'i');
             var handler = function (_match, properties, children) {
                 return interpreter(parseProps(properties), children || '');
             };
-            result = result.replace(patt, handler).replace(pattSelfColsing, handler);
+            while (patt.test(result)) {
+                result = result.replace(patt, handler);
+            }
+            while (pattSelfColsing.test(result)) {
+                result = result.replace(pattSelfColsing, handler);
+            }
         };
         for (var _i = 0, components_1 = sugar_1.default; _i < components_1.length; _i++) {
             var _a = components_1[_i], tag = _a.tag, interpreter = _a.interpreter;
