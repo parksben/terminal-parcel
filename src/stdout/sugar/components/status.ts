@@ -1,6 +1,5 @@
 import * as colors from 'colors/safe';
 
-// 状态色映射
 const COLOR_MAPPING: Record<string, string> = {
   success: 'green',
   warning: 'yellow',
@@ -8,7 +7,6 @@ const COLOR_MAPPING: Record<string, string> = {
   notice: 'cyan',
 };
 
-// 状态色组件
 export default {
   tag: 'status',
   interpreter: (props: Record<string, string>, children: string) => {

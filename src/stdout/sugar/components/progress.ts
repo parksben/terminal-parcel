@@ -1,6 +1,5 @@
 import { cyan } from 'colors/safe';
 
-// 进度条组件
 export default {
   tag: 'progress',
   interpreter: (props: Record<string, string>) => {
@@ -9,19 +8,19 @@ export default {
 
     const cellNum = Math.round(width * value);
 
-    // 拼接黑色条
+    // complete
     let cell = '';
     for (let i = 0; i < cellNum; i++) {
       cell += '█';
     }
 
-    // 拼接灰色条
+    // incomplete
     let empty = '';
     for (let i = 0; i < width - cellNum; i++) {
       empty += '░';
     }
 
-    // 进度提示文案
+    // description
     let text = '';
     const pattFraction = /^([\d.]+)\/([\d.]+)$/;
     if (pattFraction.test(props.value)) {
@@ -35,7 +34,6 @@ export default {
   },
 };
 
-// 解析进度值
 function parseValue(str: string) {
   let result = 0;
 
