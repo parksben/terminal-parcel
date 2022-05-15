@@ -1,5 +1,7 @@
 "use strict";
-// created from 'create-ts-index'
 Object.defineProperty(exports, "__esModule", { value: true });
-var tslib_1 = require("tslib");
-tslib_1.__exportStar(require("./hello"), exports);
+exports.refresh = exports.print = void 0;
+var print_1 = require("./stdout/print");
+exports.print = print_1.default;
+var refresh_1 = require("./stdout/refresh");
+exports.refresh = refresh_1.default;

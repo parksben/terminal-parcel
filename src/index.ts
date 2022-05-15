@@ -1,3 +1,4 @@
-// created from 'create-ts-index'
+import print from './stdout/print';
+import refresh from './stdout/refresh';
 
-export * from './hello';
+export { print, refresh };
