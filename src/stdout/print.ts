@@ -5,7 +5,7 @@ export default function print(
   text: string | Record<string, string>,
   useSyntax?: boolean
 ) {
-  let output = text;
+  let output = '';
 
   if (typeof text === 'object' && Object.keys(text).length) {
     output = fromRecord(text, {
@@ -14,11 +14,13 @@ export default function print(
       borderVertical: '',
       borderCorner: '',
     });
+  } else if (typeof text === 'string') {
+    output = text;
   }
 
   if (!useSyntax) {
     // remove tags spec for the table rendering
-    output = output.replace(
+    output = (output as string).replace(
       /<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi,
       '$1'
     );
