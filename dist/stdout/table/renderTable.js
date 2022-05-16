@@ -1,16 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
+var clearTags_1 = require("../clearTags");
 function renderTable(_a) {
     var rows = _a.rows, _b = _a.minColWidth, minColWidth = _b === void 0 ? 5 : _b, _c = _a.borderHorizontal, borderHorizontal = _c === void 0 ? '-' : _c, _d = _a.borderVertical, borderVertical = _d === void 0 ? '|' : _d, _e = _a.borderCorner, borderCorner = _e === void 0 ? '+' : _e;
     var colWidth = {};
-    var pattForHighlight = /<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi;
     var pattDoubleByte = /[^\x00-\xff]/g;
     var calColumnWidth = function (cn) {
         if (!colWidth[cn]) {
             var widthList = rows.map(function (row) {
-                return String(row[cn])
-                    .replace(pattForHighlight, '$1')
+                return (0, clearTags_1.default)(String(row[cn]))
                     .replace('{{borderXSymbol}}', '')
                     .replace(pattDoubleByte, 'dd').length + 2;
             });
@@ -28,9 +27,7 @@ function renderTable(_a) {
                     .fill(borderHorizontal)
                     .join(''))
                 : "".concat(borderVertical, " ").concat(c).concat(new Array(calColumnWidth(n) -
-                    String(c)
-                        .replace(pattForHighlight, '$1')
-                        .replace(pattDoubleByte, 'dd').length -
+                    (0, clearTags_1.default)(String(c)).replace(pattDoubleByte, 'dd').length -
                     1)
                     .fill(' ')
                     .join(''));

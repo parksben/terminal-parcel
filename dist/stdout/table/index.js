@@ -5,10 +5,27 @@ var renderTable_1 = require("./renderTable");
 var utils_1 = require("./utils");
 function fromRecord(record, options) {
     var data = (0, utils_1.recordToMatrix)(record);
-    var _a = options || {}, headerMapping = _a.headerMapping, _b = _a.headerHighlight, headerHighlight = _b === void 0 ? true : _b, _c = _a.transpose, transpose = _c === void 0 ? false : _c;
+    var _a = options || {}, headerAlias = _a.headerAlias, _b = _a.headerHighlight, headerHighlight = _b === void 0 ? true : _b, renderCell = _a.renderCell, _c = _a.transpose, transpose = _c === void 0 ? false : _c;
+    // apply the `renderCell` method which is customized by the user
+    if (typeof renderCell === 'function') {
+        for (var cn = 0; cn < data[0].length; cn++) {
+            var field = data[0][cn];
+            var alias = (headerAlias || {})[field];
+            var _loop_1 = function (rn) {
+                var record_1 = {};
+                data[0].forEach(function (field, col) {
+                    record_1[field] = data[rn][col];
+                });
+                data[rn][cn] = renderCell(data[rn][cn], record_1, field, alias);
+            };
+            for (var rn = 1; rn < data.length; rn++) {
+                _loop_1(rn);
+            }
+        }
+    }
     // rename table header
-    if (headerMapping && Object.keys(headerMapping || {}).length && data[0]) {
-        data[0] = data[0].map(function (x) { return headerMapping[x] || x; });
+    if (headerAlias && Object.keys(headerAlias || {}).length && data[0]) {
+        data[0] = data[0].map(function (x) { return headerAlias[x] || x; });
     }
     // highlight table header
     if (headerHighlight && data[0]) {

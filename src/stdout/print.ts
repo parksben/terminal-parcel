@@ -26,6 +26,5 @@ export default function print(
     );
   }
 
-  process.stdout.write(useSyntax ? parseSyntax(output) : output);
-  process.stdout.write('\n');
+  process.stdout.write(`${useSyntax ? parseSyntax(output) : output}\n`);
 }

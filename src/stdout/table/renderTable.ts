@@ -1,3 +1,5 @@
+import clearTags from '../clearTags';
+
 type Row = string[];
 
 export interface TableConfig {
@@ -17,16 +19,13 @@ export default function renderTable({
 }: TableConfig) {
   const colWidth: Record<number, number> = {};
 
-  const pattForHighlight =
-    /<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi;
   const pattDoubleByte = /[^\x00-\xff]/g;
 
   const calColumnWidth = (cn: number) => {
     if (!colWidth[cn]) {
       const widthList = rows.map(
         (row) =>
-          String(row[cn])
-            .replace(pattForHighlight, '$1')
+          clearTags(String(row[cn]))
             .replace('{{borderXSymbol}}', '')
             .replace(pattDoubleByte, 'dd').length + 2
       );
@@ -48,9 +47,7 @@ export default function renderTable({
                 .join('')}`
             : `${borderVertical} ${c}${new Array(
                 calColumnWidth(n) -
-                  String(c)
-                    .replace(pattForHighlight, '$1')
-                    .replace(pattDoubleByte, 'dd').length -
+                  clearTags(String(c)).replace(pattDoubleByte, 'dd').length -
                   1
               )
                 .fill(' ')

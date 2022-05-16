@@ -3,8 +3,14 @@ import { TableDataFromRecord, recordToMatrix, transposeMatrix } from './utils';
 
 export interface TableOptions {
   transpose?: boolean;
-  headerMapping?: Record<string, string>;
+  headerAlias?: Record<string, string>;
   headerHighlight?: boolean;
+  renderCell?: (
+    value: string,
+    record: Record<string, string | number>,
+    field: string,
+    alias?: string | undefined
+  ) => string;
   minColWidth?: number;
   borderHorizontal?: string;
   borderVertical?: string;
@@ -16,15 +22,32 @@ export function fromRecord(
   options?: TableOptions
 ) {
   const data = recordToMatrix(record);
+
   const {
-    headerMapping,
+    headerAlias,
     headerHighlight = true,
+    renderCell,
     transpose = false,
   } = options || {};
 
+  // apply the `renderCell` method which is customized by the user
+  if (typeof renderCell === 'function') {
+    for (let cn = 0; cn < data[0].length; cn++) {
+      const field = data[0][cn];
+      const alias = (headerAlias || {})[field];
+      for (let rn = 1; rn < data.length; rn++) {
+        const record: Record<string, string | number> = {};
+        data[0].forEach((field: string, col: number) => {
+          record[field] = data[rn][col];
+        });
+        data[rn][cn] = renderCell(data[rn][cn], record, field, alias);
+      }
+    }
+  }
+
   // rename table header
-  if (headerMapping && Object.keys(headerMapping || {}).length && data[0]) {
-    data[0] = data[0].map((x: string) => headerMapping[x] || x);
+  if (headerAlias && Object.keys(headerAlias || {}).length && data[0]) {
+    data[0] = data[0].map((x: string) => headerAlias[x] || x);
   }
 
   // highlight table header

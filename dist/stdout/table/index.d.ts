@@ -1,8 +1,9 @@
 import { TableDataFromRecord } from './utils';
 export interface TableOptions {
     transpose?: boolean;
-    headerMapping?: Record<string, string>;
+    headerAlias?: Record<string, string>;
     headerHighlight?: boolean;
+    renderCell?: (value: string, record: Record<string, string | number>, field: string, alias?: string | undefined) => string;
     minColWidth?: number;
     borderHorizontal?: string;
     borderVertical?: string;
