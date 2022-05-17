@@ -6,18 +6,21 @@ export default {
     const value = parseValue(props.value);
     const width = Number(props.width) || 50;
 
+    const markers = (props.symbol || '').split(',');
+    const [m1, m2] = markers.length === 2 ? markers : ['█', '░'];
+
     const cellNum = Math.round(width * value);
 
     // complete
     let cell = '';
     for (let i = 0; i < cellNum; i++) {
-      cell += '█';
+      cell += m1;
     }
 
     // incomplete
     let empty = '';
     for (let i = 0; i < width - cellNum; i++) {
-      empty += '░';
+      empty += m2;
     }
 
     // description

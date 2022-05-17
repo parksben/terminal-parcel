@@ -6,16 +6,18 @@ exports.default = {
     interpreter: function (props) {
         var value = parseValue(props.value);
         var width = Number(props.width) || 50;
+        var markers = (props.symbol || '').split(',');
+        var _a = markers.length === 2 ? markers : ['█', '░'], m1 = _a[0], m2 = _a[1];
         var cellNum = Math.round(width * value);
         // complete
         var cell = '';
         for (var i = 0; i < cellNum; i++) {
-            cell += '█';
+            cell += m1;
         }
         // incomplete
         var empty = '';
         for (var i = 0; i < width - cellNum; i++) {
-            empty += '░';
+            empty += m2;
         }
         // description
         var text = '';

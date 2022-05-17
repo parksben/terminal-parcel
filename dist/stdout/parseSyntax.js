@@ -31,7 +31,7 @@ exports.default = parseSyntax;
 function parseProps(text) {
     var result = {};
     try {
-        var strList = text.trim().split(' ');
+        var strList = text.trim().split(/(?<=")\s(?=\w)/g);
         var patt = /^([^=]+)="([^"]+)"$/;
         for (var _i = 0, strList_1 = strList; _i < strList_1.length; _i++) {
             var str = strList_1[_i];
@@ -39,7 +39,7 @@ function parseProps(text) {
             var propKey = matched[1] || '';
             var propVal = matched[2] || '';
             if (propKey) {
-                result[propKey] = propVal.trim();
+                result[propKey] = propVal;
             }
         }
     }

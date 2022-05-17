@@ -35,7 +35,7 @@ function parseProps(text: string) {
   const result: Record<string, string> = {};
 
   try {
-    const strList = text.trim().split(' ');
+    const strList = text.trim().split(/(?<=")\s(?=\w)/g);
     const patt = /^([^=]+)="([^"]+)"$/;
 
     for (const str of strList) {
@@ -43,7 +43,7 @@ function parseProps(text: string) {
       const propKey = matched[1] || '';
       const propVal = matched[2] || '';
       if (propKey) {
-        result[propKey] = propVal.trim();
+        result[propKey] = propVal;
       }
     }
   } catch (e) {}
