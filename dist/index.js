@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.table = exports.refresh = exports.print = void 0;
+exports.Workflow = exports.table = exports.refresh = exports.print = void 0;
 var print_1 = require("./stdout/print");
 exports.print = print_1.default;
 var refresh_1 = require("./stdout/refresh");
 exports.refresh = refresh_1.default;
 var table = require("./stdout/table");
 exports.table = table;
+var workflow_1 = require("./work/workflow");
+exports.Workflow = workflow_1.default;

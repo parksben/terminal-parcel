@@ -19,7 +19,6 @@ function print(text, useSyntax) {
         // remove tags spec for the table rendering
         output = output.replace(/<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi, '$1');
     }
-    // process.stdout.write(`${useSyntax ? parseSyntax(output) : output}\n`);
-    console.log(useSyntax ? (0, parseSyntax_1.default)(output) : output);
+    process.stdout.write("".concat(useSyntax ? (0, parseSyntax_1.default)(output) : output, "\n"));
 }
 exports.default = print;
