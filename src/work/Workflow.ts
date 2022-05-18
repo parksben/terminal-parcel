@@ -40,7 +40,7 @@ export class Workflow {
   async start() {
     const startAt = performance.now();
 
-    print(`✨ ${this.topic ?? 'workflow start...'}`, true);
+    print(`✨ ${this.topic ?? 'Workflow start...'}`, true);
 
     const completion = await this.steps.reduce(
       async (value: any, step: Step, index: number, steps: Step[]) => {

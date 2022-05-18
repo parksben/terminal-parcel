@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.wait = exports.formatTimeSpent = exports.Workflow = exports.table = exports.refresh = exports.print = void 0;
+exports.waitFor = exports.wait = exports.formatTimeSpent = exports.Workflow = exports.table = exports.refresh = exports.print = void 0;
 // stdout
 var print_1 = require("./stdout/print");
 exports.print = print_1.default;
@@ -16,3 +16,5 @@ exports.formatTimeSpent = formatTimeSpent_1.default;
 // wait
 var wait_1 = require("./wait/wait");
 exports.wait = wait_1.default;
+var waitFor_1 = require("./wait/waitFor");
+exports.waitFor = waitFor_1.default;

@@ -1,7 +1,5 @@
 const { print, table } = require('../dist'); // const { print } = require('terminal-parcel');
 
-/* -- demo01 start -- */
-
 print('\n1. print a table from the object list:\n');
 
 const recordList = [
@@ -12,10 +10,6 @@ const recordList = [
 ];
 
 print(table.fromRecord(recordList), true);
-
-/* -- demo01 end -- */
-
-/* -- demo02 start -- */
 
 print(
   "\n2. translate table contents and highlight rows that contains score likes 'A':\n"
@@ -28,7 +22,7 @@ const headerAlias = {
   score: '成绩',
 };
 
-const renderCell = (value, record, field) => {
+const renderCell = (value, record, field, alias) => {
   let text = value;
 
   // translate the column named 'gender'
@@ -51,5 +45,3 @@ print(
   }),
   true
 );
-
-/* -- demo02 end -- */

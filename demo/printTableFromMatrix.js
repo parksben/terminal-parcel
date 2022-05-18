@@ -7,5 +7,8 @@ const matrix = [
   [13, 14, 15, 16],
 ];
 
-// print a table from matrix
+print('\n1. print a table from matrix:\n');
+print(table.fromMatrix(matrix));
+
+print('\n2. transpose the table above:\n');
 print(table.fromMatrix(matrix, { transpose: true }));

@@ -27,7 +27,7 @@ var Workflow = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         startAt = performance.now();
-                        (0, print_1.default)("\u2728 ".concat((_a = this.topic) !== null && _a !== void 0 ? _a : 'workflow start...'), true);
+                        (0, print_1.default)("\u2728 ".concat((_a = this.topic) !== null && _a !== void 0 ? _a : 'Workflow start...'), true);
                         return [4 /*yield*/, this.steps.reduce(function (value, step, index, steps) { return tslib_1.__awaiter(_this, void 0, void 0, function () {
                                 var processorValue, nextValue;
                                 return tslib_1.__generator(this, function (_a) {

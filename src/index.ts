@@ -7,5 +7,6 @@ import Workflow from './work/workflow';
 import formatTimeSpent from './work/formatTimeSpent';
 // wait
 import wait from './wait/wait';
+import waitFor from './wait/waitFor';
 
-export { print, refresh, table, Workflow, formatTimeSpent, wait };
+export { print, refresh, table, Workflow, formatTimeSpent, wait, waitFor };
