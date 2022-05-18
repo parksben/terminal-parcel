@@ -6,18 +6,18 @@ const { fetchBlogList, fetchBlogContent } = require('./utils'); // the async met
 const workflow = new Workflow('Data acquisition for my blog');
 
 // Step1: fetch the blog list
-workflow.add('Fetch list...', async () => {
+workflow.add('fetch blog list...', async () => {
   return await fetchBlogList();
 });
 
 // Step2: fetch contents from the blog list fetched by the previous step
-workflow.add('Fetch contents...', async (list) => {
+workflow.add('fetch blog detail...', async (list) => {
   const requests = list.map((blog) => fetchBlogContent(blog));
   return await Promise.all(requests);
 });
 
 // Step3: save the data of blogs to a local file
-workflow.add('Save data to file...', (data) => {
+workflow.add('save data as a file...', (data) => {
   const filePath = path.resolve('./blog.json');
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
   print(`=> ${filePath}`, true);

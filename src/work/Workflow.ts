@@ -1,5 +1,4 @@
 import print from '../stdout/print';
-import refresh from '../stdout/refresh';
 import formatTimeSpent from './formatTimeSpent';
 
 export interface Processor {

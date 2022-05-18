@@ -12,8 +12,8 @@ export default function formatTimeSpent(duration: number) {
   }
 
   if (duration < hour) {
-    return `${Math.round((10 * duration) / min) / 10} minutes`;
+    return `${Math.round((10 * duration) / min) / 10}min`;
   }
 
-  return `${Math.round((10 * duration) / hour) / 10} hours`;
+  return `${Math.round((10 * duration) / hour) / 10}h`;
 }
