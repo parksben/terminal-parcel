@@ -11,8 +11,8 @@ function formatTimeSpent(duration) {
         return "".concat(Math.round((10 * duration) / sec) / 10, "s");
     }
     if (duration < hour) {
-        return "".concat(Math.round((10 * duration) / min) / 10, " minutes");
+        return "".concat(Math.round((10 * duration) / min) / 10, "min");
     }
-    return "".concat(Math.round((10 * duration) / hour) / 10, " hours");
+    return "".concat(Math.round((10 * duration) / hour) / 10, "h");
 }
 exports.default = formatTimeSpent;
