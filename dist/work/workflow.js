@@ -18,7 +18,7 @@ var Workflow = /** @class */ (function () {
         });
         this.total += 1;
     };
-    Workflow.prototype.start = function () {
+    Workflow.prototype.exec = function () {
         var _a;
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             var startAt, completion;

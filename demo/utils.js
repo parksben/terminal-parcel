@@ -27,24 +27,24 @@ exports.fetchBlogList = async function fetchBlogList() {
       title: 'How to make a fantastic CLI tool in node.js',
       author: 'parksben',
       date: '2020/02/06',
+      url: 'https://www.fakeblog.me/zbsrgtah',
     },
     {
       title: 'Write the automation scripts efficiently in node.js',
       author: 'parksben',
       date: '2020/02/12',
+      url: 'https://www.fakeblog.me/tigserew',
     },
     {
       title: 'What is `terminal-parcel`?',
       author: 'parksben',
       date: '2020/04/01',
+      url: 'https://www.fakeblog.me/ukzhweya',
     },
   ];
 };
 
-exports.fetchBlogContent = async function fetchBlogContent(blogInfo) {
+exports.fetchBlogContent = async function fetchBlogContent() {
   await wait(3000);
-  return {
-    ...blogInfo,
-    content: 'Blah blah blah blah blah...',
-  };
+  return 'This is one fake article for the example of methods `Workflow` and `JobQueue`';
 };

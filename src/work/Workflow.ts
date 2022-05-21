@@ -37,7 +37,7 @@ export class Workflow {
     this.total += 1;
   }
 
-  async start() {
+  async exec() {
     const startAt = performance.now();
 
     print(`✨ ${this.topic ?? 'Workflow start...'}`, true);

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.waitFor = exports.wait = exports.formatTimeSpent = exports.Workflow = exports.table = exports.refresh = exports.print = void 0;
+exports.waitFor = exports.wait = exports.formatTimeSpent = exports.JobQueue = exports.Workflow = exports.table = exports.refresh = exports.print = void 0;
 // stdout
 var print_1 = require("./stdout/print");
 exports.print = print_1.default;
@@ -11,6 +11,8 @@ exports.table = table;
 // work
 var workflow_1 = require("./work/workflow");
 exports.Workflow = workflow_1.default;
+var JobQueue_1 = require("./work/JobQueue");
+exports.JobQueue = JobQueue_1.default;
 var formatTimeSpent_1 = require("./work/formatTimeSpent");
 exports.formatTimeSpent = formatTimeSpent_1.default;
 // wait

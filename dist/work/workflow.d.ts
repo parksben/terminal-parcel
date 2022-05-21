@@ -17,6 +17,6 @@ export declare class Workflow {
     total: number;
     constructor(topic?: string);
     add(description: string, processor: Processor): void;
-    start(): Promise<any>;
+    exec(): Promise<any>;
 }
 export default Workflow;
