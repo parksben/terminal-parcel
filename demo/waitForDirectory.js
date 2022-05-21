@@ -21,4 +21,4 @@ workflow.add(
   }
 );
 
-workflow.start();
+workflow.exec();
