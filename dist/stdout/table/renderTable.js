@@ -14,7 +14,7 @@ function renderTable(userData, userConfig) {
     var data = transpose ? (0, utils_1.transposeMatrix)(userData) : userData;
     if (useSyntax) {
         data = data.map(function (row) {
-            return row.map(function (cell) { return (0, parseSyntax_1.default)(cell); });
+            return row.map(function (cell) { return (0, parseSyntax_1.default)(String(cell)); });
         });
     }
     return (0, table_1.table)(data, others).replace(/(\n|\r)*?$/, '');

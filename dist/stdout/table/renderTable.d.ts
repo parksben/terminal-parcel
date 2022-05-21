@@ -3,4 +3,4 @@ export interface TableConfig extends TableUserConfig {
     useSyntax?: boolean;
     transpose?: boolean;
 }
-export default function renderTable(userData: string[][], userConfig?: TableConfig): string;
+export default function renderTable(userData: unknown[][], userConfig?: TableConfig): string;

@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash.clonedeep';
 import renderTable, { TableConfig } from './renderTable';
 import { TableDataFromRecord, recordToMatrix } from './utils';
 
@@ -5,7 +6,7 @@ export interface RecordTableConfig extends TableConfig {
   headerAlias?: Record<string, string>;
   headerHighlight?: boolean;
   renderCell?: (
-    value: string,
+    value: unknown,
     record: Record<string, string | number>,
     field: string,
     alias?: string | undefined
@@ -55,6 +56,27 @@ export function fromRecord(
   return fromMatrix(data, others);
 }
 
-export function fromMatrix(data: string[][], config?: TableConfig) {
-  return renderTable(data, config);
+export interface MatrixTableConfig extends TableConfig {
+  renderCell?: (
+    value: unknown,
+    rowIndex: number,
+    columnIndex: number
+  ) => string;
+}
+
+export function fromMatrix(data: unknown[][], config?: MatrixTableConfig) {
+  const { renderCell, ...others } = config || {};
+
+  const dataCopy = cloneDeep(data);
+
+  // apply the `renderCell` method which is customized by the user
+  if (typeof renderCell === 'function') {
+    for (let rn = 0; rn < dataCopy.length; rn++) {
+      for (let cn = 0; cn < dataCopy[rn].length; cn++) {
+        dataCopy[rn][cn] = renderCell(dataCopy[rn][cn], rn, cn);
+      }
+    }
+  }
+
+  return renderTable(dataCopy, others);
 }

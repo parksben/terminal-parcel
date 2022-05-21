@@ -15,7 +15,7 @@ const DEFAULT_CONFIG = {
 };
 
 export default function renderTable(
-  userData: string[][],
+  userData: unknown[][],
   userConfig?: TableConfig
 ) {
   const { transpose, useSyntax, ...others } = {
@@ -30,8 +30,8 @@ export default function renderTable(
   let data = transpose ? transposeMatrix(userData) : userData;
 
   if (useSyntax) {
-    data = data.map((row: string[]) =>
-      row.map((cell: string) => parseSyntax(cell))
+    data = data.map((row: unknown[]) =>
+      row.map((cell: unknown) => parseSyntax(String(cell)))
     );
   }
 

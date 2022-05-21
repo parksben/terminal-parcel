@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fromMatrix = exports.fromRecord = void 0;
 var tslib_1 = require("tslib");
+var lodash_clonedeep_1 = tslib_1.__importDefault(require("lodash.clonedeep"));
 var renderTable_1 = tslib_1.__importDefault(require("./renderTable"));
 var utils_1 = require("./utils");
 function fromRecord(record, config) {
@@ -36,6 +37,16 @@ function fromRecord(record, config) {
 }
 exports.fromRecord = fromRecord;
 function fromMatrix(data, config) {
-    return (0, renderTable_1.default)(data, config);
+    var _a = config || {}, renderCell = _a.renderCell, others = tslib_1.__rest(_a, ["renderCell"]);
+    var dataClone = (0, lodash_clonedeep_1.default)(data);
+    // apply the `renderCell` method which is customized by the user
+    if (typeof renderCell === 'function') {
+        for (var rn = 0; rn < dataClone.length; rn++) {
+            for (var cn = 0; cn < dataClone[rn].length; cn++) {
+                dataClone[rn][cn] = renderCell(dataClone[rn][cn], rn, cn);
+            }
+        }
+    }
+    return (0, renderTable_1.default)(dataClone, others);
 }
 exports.fromMatrix = fromMatrix;

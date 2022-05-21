@@ -15,8 +15,8 @@ export function recordToMatrix(record: TableDataFromRecord) {
   return [Object.keys(record), Object.values(record)];
 }
 
-export function transposeMatrix(data: Array<string[]>) {
-  const result: Array<string[]> = [];
+export function transposeMatrix(data: Array<unknown[]>) {
+  const result: Array<unknown[]> = [];
 
   if (data && data[0]) {
     for (let i = 0; i < data[0].length; i++) {
