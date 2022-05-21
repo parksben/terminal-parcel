@@ -2,7 +2,7 @@ import print from '../stdout/print';
 import formatTimeSpent from './formatTimeSpent';
 
 export interface Processor {
-  (value: any, index: number, total: number): any;
+  (value?: any, index?: number, total?: number): any;
 }
 
 export interface Step {

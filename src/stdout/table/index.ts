@@ -6,10 +6,12 @@ export interface RecordTableConfig extends TableConfig {
   headerAlias?: Record<string, string>;
   headerHighlight?: boolean;
   renderCell?: (
-    value: unknown,
-    record: Record<string, string | number>,
-    field: string,
-    alias?: string | undefined
+    value?: unknown,
+    record?: Record<string, string | number>,
+    field?: string,
+    alias?: string,
+    rowIndex?: number,
+    columnIndex?: number
   ) => string;
 }
 
@@ -36,7 +38,7 @@ export function fromRecord(
         data[0].forEach((field: string, col: number) => {
           record[field] = data[rn][col];
         });
-        data[rn][cn] = renderCell(data[rn][cn], record, field, alias);
+        data[rn][cn] = renderCell(data[rn][cn], record, field, alias, rn, cn);
       }
     }
   }
@@ -58,9 +60,9 @@ export function fromRecord(
 
 export interface MatrixTableConfig extends TableConfig {
   renderCell?: (
-    value: unknown,
-    rowIndex: number,
-    columnIndex: number
+    value?: unknown,
+    rowIndex?: number,
+    columnIndex?: number
   ) => string;
 }
 

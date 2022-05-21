@@ -18,7 +18,7 @@ function fromRecord(record, config) {
                 data[0].forEach(function (field, col) {
                     record_1[field] = data[rn][col];
                 });
-                data[rn][cn] = renderCell(data[rn][cn], record_1, field, alias);
+                data[rn][cn] = renderCell(data[rn][cn], record_1, field, alias, rn, cn);
             };
             for (var rn = 1; rn < data.length; rn++) {
                 _loop_1(rn);
@@ -38,15 +38,15 @@ function fromRecord(record, config) {
 exports.fromRecord = fromRecord;
 function fromMatrix(data, config) {
     var _a = config || {}, renderCell = _a.renderCell, others = tslib_1.__rest(_a, ["renderCell"]);
-    var dataClone = (0, lodash_clonedeep_1.default)(data);
+    var dataCopy = (0, lodash_clonedeep_1.default)(data);
     // apply the `renderCell` method which is customized by the user
     if (typeof renderCell === 'function') {
-        for (var rn = 0; rn < dataClone.length; rn++) {
-            for (var cn = 0; cn < dataClone[rn].length; cn++) {
-                dataClone[rn][cn] = renderCell(dataClone[rn][cn], rn, cn);
+        for (var rn = 0; rn < dataCopy.length; rn++) {
+            for (var cn = 0; cn < dataCopy[rn].length; cn++) {
+                dataCopy[rn][cn] = renderCell(dataCopy[rn][cn], rn, cn);
             }
         }
     }
-    return (0, renderTable_1.default)(dataClone, others);
+    return (0, renderTable_1.default)(dataCopy, others);
 }
 exports.fromMatrix = fromMatrix;

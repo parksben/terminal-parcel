@@ -24,7 +24,7 @@ export default function print(
 
   if (!useSyntax) {
     // remove tags spec for the table rendering
-    output = (output as string).replace(
+    output = output.replace(
       /<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi,
       '$1'
     );
