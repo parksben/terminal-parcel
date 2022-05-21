@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Log = void 0;
-var fs = require("node:fs");
-var path = require("path");
+var tslib_1 = require("tslib");
+var node_fs_1 = tslib_1.__importDefault(require("node:fs"));
+var path_1 = tslib_1.__importDefault(require("path"));
 var Log = /** @class */ (function () {
     function Log(options) {
         var _a = options || {}, file = _a.file, encoding = _a.encoding, mode = _a.mode, formatter = _a.formatter;
@@ -20,19 +21,19 @@ var Log = /** @class */ (function () {
         this.cache.push(String(useFormatter ? this.formatter(record) : record));
     };
     Log.prototype.save = function () {
-        var filePath = path.resolve(process.cwd(), this.file);
+        var filePath = path_1.default.resolve(process.cwd(), this.file);
         var content = this.cache.join('\n') + '\n';
         // clear the cache
         this.cache = [];
         // create file if not exists
-        if (!fs.existsSync(filePath)) {
-            fs.writeFileSync(filePath, '', { encoding: this.encoding });
+        if (!node_fs_1.default.existsSync(filePath)) {
+            node_fs_1.default.writeFileSync(filePath, '', { encoding: this.encoding });
         }
         if (this.mode === 'refresh') {
-            fs.writeFileSync(filePath, content, { encoding: this.encoding });
+            node_fs_1.default.writeFileSync(filePath, content, { encoding: this.encoding });
         }
         if (this.mode === 'append') {
-            fs.appendFileSync(filePath, content, { encoding: this.encoding });
+            node_fs_1.default.appendFileSync(filePath, content, { encoding: this.encoding });
         }
     };
     return Log;

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var colors = require("colors/safe");
+var tslib_1 = require("tslib");
+var safe_1 = tslib_1.__importDefault(require("colors/safe"));
 var COLOR_MAPPING = {
     success: 'green',
     warning: 'yellow',
@@ -16,6 +17,6 @@ exports.default = {
             colorPath = colorPath.replace(key, val);
         }
         var render = new Function('colors', 'text', "return colors.".concat(colorPath, "(text)"));
-        return render(colors, children);
+        return render(safe_1.default, children);
     },
 };

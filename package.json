@@ -17,7 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "colors": "^1.4.0",
-    "single-line-log": "^1.1.2"
+    "single-line-log": "^1.1.2",
+    "table": "^6.8.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.33",

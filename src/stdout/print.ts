@@ -1,18 +1,22 @@
+import { getBorderCharacters } from 'table';
 import parseSyntax from './parseSyntax';
 import { fromRecord } from './table';
 
 export default function print(
   text: string | Record<string, string>,
-  useSyntax?: boolean
+  useSyntax = true
 ) {
   let output = '';
 
   if (typeof text === 'object' && Object.keys(text).length) {
     output = fromRecord(text, {
       transpose: true,
-      borderHorizontal: '',
-      borderVertical: '',
-      borderCorner: '',
+      border: getBorderCharacters('void'),
+      columnDefault: {
+        paddingLeft: 0,
+        paddingRight: 1,
+      },
+      drawHorizontalLine: () => false,
     });
   } else if (typeof text === 'string') {
     output = text;

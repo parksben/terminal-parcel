@@ -1,15 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var parseSyntax_1 = require("./parseSyntax");
-var table_1 = require("./table");
+var tslib_1 = require("tslib");
+var table_1 = require("table");
+var parseSyntax_1 = tslib_1.__importDefault(require("./parseSyntax"));
+var table_2 = require("./table");
 function print(text, useSyntax) {
+    if (useSyntax === void 0) { useSyntax = true; }
     var output = '';
     if (typeof text === 'object' && Object.keys(text).length) {
-        output = (0, table_1.fromRecord)(text, {
+        output = (0, table_2.fromRecord)(text, {
             transpose: true,
-            borderHorizontal: '',
-            borderVertical: '',
-            borderCorner: '',
+            border: (0, table_1.getBorderCharacters)('void'),
+            columnDefault: {
+                paddingLeft: 0,
+                paddingRight: 1,
+            },
+            drawHorizontalLine: function () { return false; },
         });
     }
     else if (typeof text === 'string') {

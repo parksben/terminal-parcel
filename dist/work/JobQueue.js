@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JobQueue = void 0;
 var tslib_1 = require("tslib");
-var print_1 = require("../stdout/print");
-var refresh_1 = require("../stdout/refresh");
-var formatTimeSpent_1 = require("./formatTimeSpent");
+var print_1 = tslib_1.__importDefault(require("../stdout/print"));
+var refresh_1 = tslib_1.__importDefault(require("../stdout/refresh"));
+var formatTimeSpent_1 = tslib_1.__importDefault(require("./formatTimeSpent"));
 var JobQueue = /** @class */ (function () {
     function JobQueue(topic) {
         this.topic = topic;

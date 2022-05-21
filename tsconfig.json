@@ -6,6 +6,7 @@
     "outDir": "./dist",
     "strict": true,
     "resolveJsonModule": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "esModuleInterop": true
   }
 }

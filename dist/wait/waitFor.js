@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var print_1 = require("../stdout/print");
+var print_1 = tslib_1.__importDefault(require("../stdout/print"));
 function waitFor(condition, options) {
     var _this = this;
     var judge = typeof condition === 'function' ? condition : function () { return false; };

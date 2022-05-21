@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fromMatrix = exports.fromRecord = void 0;
-var renderTable_1 = require("./renderTable");
+var tslib_1 = require("tslib");
+var renderTable_1 = tslib_1.__importDefault(require("./renderTable"));
 var utils_1 = require("./utils");
-function fromRecord(record, options) {
+function fromRecord(record, config) {
     var data = (0, utils_1.recordToMatrix)(record);
-    var _a = options || {}, headerAlias = _a.headerAlias, _b = _a.headerHighlight, headerHighlight = _b === void 0 ? true : _b, renderCell = _a.renderCell, _c = _a.transpose, transpose = _c === void 0 ? false : _c;
+    var _a = config || {}, headerAlias = _a.headerAlias, _b = _a.headerHighlight, headerHighlight = _b === void 0 ? true : _b, renderCell = _a.renderCell, others = tslib_1.__rest(_a, ["headerAlias", "headerHighlight", "renderCell"]);
     // apply the `renderCell` method which is customized by the user
     if (typeof renderCell === 'function') {
         for (var cn = 0; cn < data[0].length; cn++) {
@@ -31,21 +32,10 @@ function fromRecord(record, options) {
     if (headerHighlight && data[0]) {
         data[0] = data[0].map(function (x) { return "<status type=\"notice.bold\" spec=\"table\">".concat(x, "</status>"); });
     }
-    // insert the border bottom of table header
-    if (!transpose && data[0]) {
-        data.splice(1, 0, data[0].map(function () { return '{{borderXSymbol}}'; }));
-    }
-    return fromMatrix(data, options);
+    return fromMatrix(data, others);
 }
 exports.fromRecord = fromRecord;
-function fromMatrix(data, options) {
-    var _a = options || {}, _b = _a.transpose, transpose = _b === void 0 ? false : _b, minColWidth = _a.minColWidth, borderHorizontal = _a.borderHorizontal, borderVertical = _a.borderVertical, borderCorner = _a.borderCorner;
-    return (0, renderTable_1.default)({
-        rows: transpose ? (0, utils_1.transposeMatrix)(data) : data,
-        minColWidth: minColWidth,
-        borderHorizontal: borderHorizontal,
-        borderVertical: borderVertical,
-        borderCorner: borderCorner,
-    });
+function fromMatrix(data, config) {
+    return (0, renderTable_1.default)(data, config);
 }
 exports.fromMatrix = fromMatrix;

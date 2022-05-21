@@ -4,4 +4,4 @@ const { print } = require('../dist'); // const { print } = require('terminal-par
 print('this is one sentence.');
 
 // print type object
-print({ Value: 'face', Prop: 0.5 }, true);
+print({ Value: 'face', Prop: 0.5 });

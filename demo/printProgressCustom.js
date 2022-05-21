@@ -2,7 +2,7 @@ const { print, refresh } = require('../dist'); // const { print, refresh } = req
 const { download } = require('./utils'); // a method for simulating the download process
 
 const onPending = (ratio) => {
-  refresh(`downloding: <progress value="${ratio}" symbol="-, " />`, true);
+  refresh(`downloding: <progress value="${ratio}" symbol="-, " />`);
 };
 
 const onComplete = () => {

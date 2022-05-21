@@ -1,6 +1,6 @@
 const { print, table } = require('../dist'); // const { print } = require('terminal-parcel');
 
-print('\n1. print a table from the object list:\n');
+print('1. print a table from the object list:');
 
 const recordList = [
   { name: 'Jhonson', gender: 'male', age: 18, score: 'B+' },
@@ -9,10 +9,10 @@ const recordList = [
   { name: 'Jacos', gender: 'male', age: 17, score: 'A-' },
 ];
 
-print(table.fromRecord(recordList), true);
+print(table.fromRecord(recordList));
 
 print(
-  "\n2. translate table contents and highlight rows that contains score likes 'A':\n"
+  "2. translate table contents and highlight rows that contains score likes 'A':"
 );
 
 const headerAlias = {
@@ -42,6 +42,5 @@ print(
   table.fromRecord(recordList, {
     headerAlias, // config the header alias
     renderCell, // custom cell rendering effects
-  }),
-  true
+  })
 );

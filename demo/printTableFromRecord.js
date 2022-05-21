@@ -7,4 +7,4 @@ const record = {
 };
 
 // print a table from object
-print(table.fromRecord(record), true);
+print(table.fromRecord(record));

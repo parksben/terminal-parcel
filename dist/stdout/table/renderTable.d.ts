@@ -1,10 +1,6 @@
-declare type Row = string[];
-export interface TableConfig {
-    rows: Row[];
-    minColWidth?: number;
-    borderHorizontal?: string;
-    borderVertical?: string;
-    borderCorner?: string;
+import { TableUserConfig } from 'table/dist/src/types/api';
+export interface TableConfig extends TableUserConfig {
+    useSyntax?: boolean;
+    transpose?: boolean;
 }
-export default function renderTable({ rows, minColWidth, borderHorizontal, borderVertical, borderCorner, }: TableConfig): string;
-export {};
+export default function renderTable(userData: string[][], userConfig?: TableConfig): string;

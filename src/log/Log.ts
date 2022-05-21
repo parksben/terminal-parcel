@@ -1,5 +1,5 @@
-import * as fs from 'node:fs';
-import * as path from 'path';
+import fs from 'node:fs';
+import path from 'path';
 
 export interface RecordFormatter {
   (record: any): string;

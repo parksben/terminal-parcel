@@ -1,4 +1,4 @@
-import * as colors from 'colors/safe';
+import colors from 'colors/safe';
 
 const COLOR_MAPPING: Record<string, string> = {
   success: 'green',

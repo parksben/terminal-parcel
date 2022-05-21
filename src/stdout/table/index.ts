@@ -1,8 +1,7 @@
-import renderTable from './renderTable';
-import { TableDataFromRecord, recordToMatrix, transposeMatrix } from './utils';
+import renderTable, { TableConfig } from './renderTable';
+import { TableDataFromRecord, recordToMatrix } from './utils';
 
-export interface TableOptions {
-  transpose?: boolean;
+export interface RecordTableConfig extends TableConfig {
   headerAlias?: Record<string, string>;
   headerHighlight?: boolean;
   renderCell?: (
@@ -11,15 +10,11 @@ export interface TableOptions {
     field: string,
     alias?: string | undefined
   ) => string;
-  minColWidth?: number;
-  borderHorizontal?: string;
-  borderVertical?: string;
-  borderCorner?: string;
 }
 
 export function fromRecord(
   record: TableDataFromRecord,
-  options?: TableOptions
+  config?: RecordTableConfig
 ) {
   const data = recordToMatrix(record);
 
@@ -27,8 +22,8 @@ export function fromRecord(
     headerAlias,
     headerHighlight = true,
     renderCell,
-    transpose = false,
-  } = options || {};
+    ...others
+  } = config || {};
 
   // apply the `renderCell` method which is customized by the user
   if (typeof renderCell === 'function') {
@@ -57,32 +52,9 @@ export function fromRecord(
     );
   }
 
-  // insert the border bottom of table header
-  if (!transpose && data[0]) {
-    data.splice(
-      1,
-      0,
-      data[0].map(() => '{{borderXSymbol}}')
-    );
-  }
-
-  return fromMatrix(data, options);
+  return fromMatrix(data, others);
 }
 
-export function fromMatrix(data: string[][], options?: TableOptions) {
-  const {
-    transpose = false,
-    minColWidth,
-    borderHorizontal,
-    borderVertical,
-    borderCorner,
-  } = options || {};
-
-  return renderTable({
-    rows: transpose ? transposeMatrix(data) : data,
-    minColWidth,
-    borderHorizontal,
-    borderVertical,
-    borderCorner,
-  });
+export function fromMatrix(data: string[][], config?: TableConfig) {
+  return renderTable(data, config);
 }
