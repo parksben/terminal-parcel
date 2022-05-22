@@ -31,7 +31,7 @@ function fromRecord(record, config) {
     }
     // highlight table header
     if (headerHighlight && data[0]) {
-        data[0] = data[0].map(function (x) { return "<status type=\"notice.bold\" spec=\"table\">".concat(x, "</status>"); });
+        data[0] = data[0].map(function (x) { return "<color code=\"notice.bold\" spec=\"table\">".concat(x, "</color>"); });
     }
     return fromMatrix(data, others);
 }

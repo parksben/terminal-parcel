@@ -23,7 +23,7 @@ function print(text, useSyntax) {
     }
     if (!useSyntax) {
         // remove tags spec for the table rendering
-        output = output.replace(/<status[^>]*?spec="table"[^>]*?>([^<]*?)<\/status>/gi, '$1');
+        output = output.replace(/<color[^>]*?spec="table"[^>]*?>([^<]*?)<\/color>/gi, '$1');
     }
     process.stdout.write("".concat(useSyntax ? (0, parseSyntax_1.default)(output) : output, "\n"));
 }

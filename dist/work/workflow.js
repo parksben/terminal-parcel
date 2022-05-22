@@ -35,11 +35,11 @@ var Workflow = /** @class */ (function () {
                                         case 0: return [4 /*yield*/, Promise.resolve(value)];
                                         case 1:
                                             processorValue = _a.sent();
-                                            (0, print_1.default)("<status type=\"notice\">[".concat(index + 1, "/").concat(steps.length, "]</status> ").concat(step.description), true);
+                                            (0, print_1.default)("<color code=\"notice\">[".concat(index + 1, "/").concat(steps.length, "]</color> ").concat(step.description), true);
                                             return [4 /*yield*/, Promise.resolve(step.processor(processorValue, index, steps.length))
                                                     .then(function (v) { return v; })
                                                     .catch(function (e) {
-                                                    (0, print_1.default)("<status type=\"error\">[ERROR]</status> ".concat(String(e)), true);
+                                                    (0, print_1.default)("<color code=\"error\">[ERROR]</color> ".concat(String(e)), true);
                                                     process.exit(-1);
                                                 })];
                                         case 2:

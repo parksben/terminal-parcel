@@ -51,7 +51,7 @@ export function fromRecord(
   // highlight table header
   if (headerHighlight && data[0]) {
     data[0] = data[0].map(
-      (x: string) => `<status type="notice.bold" spec="table">${x}</status>`
+      (x: string) => `<color code="notice.bold" spec="table">${x}</color>`
     );
   }
 

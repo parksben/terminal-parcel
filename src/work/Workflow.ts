@@ -47,7 +47,7 @@ export class Workflow {
         const processorValue = await Promise.resolve(value);
 
         print(
-          `<status type="notice">[${index + 1}/${steps.length}]</status> ${
+          `<color code="notice">[${index + 1}/${steps.length}]</color> ${
             step.description
           }`,
           true
@@ -58,7 +58,7 @@ export class Workflow {
         )
           .then((v: any) => v)
           .catch((e: Error) => {
-            print(`<status type="error">[ERROR]</status> ${String(e)}`, true);
+            print(`<color code="error">[ERROR]</color> ${String(e)}`, true);
             process.exit(-1);
           });
 

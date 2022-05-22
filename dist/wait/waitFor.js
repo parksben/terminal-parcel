@@ -5,7 +5,7 @@ var print_1 = tslib_1.__importDefault(require("../stdout/print"));
 function waitFor(condition, options) {
     var _this = this;
     var judge = typeof condition === 'function' ? condition : function () { return false; };
-    var _a = options || {}, _b = _a.timeout, timeout = _b === void 0 ? 5000 : _b, _c = _a.timeoutMsg, timeoutMsg = _c === void 0 ? '<status type="warning">[TIMEOUT]</status> waiting timeout...' : _c, _d = _a.interval, interval = _d === void 0 ? 500 : _d;
+    var _a = options || {}, _b = _a.timeout, timeout = _b === void 0 ? 5000 : _b, _c = _a.timeoutMsg, timeoutMsg = _c === void 0 ? '<color code="warning">[TIMEOUT]</color> waiting timeout...' : _c, _d = _a.interval, interval = _d === void 0 ? 500 : _d;
     return new Promise(function (resolve, reject) {
         var isTimeout = false;
         var timeoutId = setTimeout(function () {
@@ -22,7 +22,7 @@ function waitFor(condition, options) {
                             resolve(false);
                         }
                         return [4 /*yield*/, Promise.resolve(judge()).catch(function (e) {
-                                (0, print_1.default)("<status type=\"error\">[ERROR]</status> ".concat(e), true);
+                                (0, print_1.default)("<color code=\"error\">[ERROR]</color> ".concat(e), true);
                                 if (timeoutId) {
                                     clearTimeout(timeoutId);
                                 }

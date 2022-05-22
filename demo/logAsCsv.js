@@ -12,7 +12,7 @@ const log = new Log({
 
 log.add('姓名,性别,年龄,成绩', false);
 
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 30; i++) {
   log.add({
     name: mockName(),
     gender: mockGender(),

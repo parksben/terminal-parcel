@@ -32,7 +32,7 @@ const renderCell = (value, record, field, alias) => {
 
   // highlight rows that contains score likes 'A'
   if (/A/.test(record.score)) {
-    text = `<color apply="yellow.bold">${text}</color>`;
+    text = `<color code="yellow.bold">${text}</color>`;
   }
 
   return text;

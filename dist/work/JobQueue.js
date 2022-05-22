@@ -32,7 +32,7 @@ var JobQueue = /** @class */ (function () {
                         dataLength = this.sequence.length;
                         startAt = performance.now();
                         (0, print_1.default)("\u2728 ".concat((_a = this.topic) !== null && _a !== void 0 ? _a : 'Execute jobs by queue...'), true);
-                        (0, refresh_1.default)("<status type=\"notice\">[RUNNING]</status> <progress value=\"0/".concat(dataLength, "\" />"), true);
+                        (0, refresh_1.default)("<color code=\"notice\">[RUNNING]</color> <progress value=\"0/".concat(dataLength, "\" />"), true);
                         return [4 /*yield*/, queue.reduce(function (acc, item) { return tslib_1.__awaiter(_this, void 0, void 0, function () {
                                 var complete, itemSize, e_1;
                                 var _this = this;
@@ -55,7 +55,7 @@ var JobQueue = /** @class */ (function () {
                                             e_1 = _a.sent();
                                             return [3 /*break*/, 5];
                                         case 5:
-                                            (0, refresh_1.default)("<status type=\"notice\">[RUNNING]</status> <progress value=\"".concat(complete + itemSize, "/").concat(dataLength, "\" />"), true);
+                                            (0, refresh_1.default)("<color code=\"notice\">[RUNNING]</color> <progress value=\"".concat(complete + itemSize, "/").concat(dataLength, "\" />"), true);
                                             return [2 /*return*/, complete + itemSize];
                                     }
                                 });

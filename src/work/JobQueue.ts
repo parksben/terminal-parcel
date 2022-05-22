@@ -39,7 +39,7 @@ export class JobQueue {
     print(`✨ ${this.topic ?? 'Execute jobs by queue...'}`, true);
 
     refresh(
-      `<status type="notice">[RUNNING]</status> <progress value="0/${dataLength}" />`,
+      `<color code="notice">[RUNNING]</color> <progress value="0/${dataLength}" />`,
       true
     );
 
@@ -57,7 +57,7 @@ export class JobQueue {
         } catch (e) {}
 
         refresh(
-          `<status type="notice">[RUNNING]</status> <progress value="${
+          `<color code="notice">[RUNNING]</color> <progress value="${
             complete + itemSize
           }/${dataLength}" />`,
           true

@@ -16,10 +16,10 @@ print(
   table.fromMatrix(matrix, {
     renderCell: (value, rowIdx, colIdx) => {
       if (value >= 20 && value <= 26) {
-        return `<color apply="cyan.bold">${value}</color>`;
+        return `<color code="cyan.bold">${value}</color>`;
       }
       if (colIdx === 0 || colIdx === 6) {
-        return `<color apply="grey">${value}</color>`;
+        return `<color code="grey">${value}</color>`;
       }
       return value;
     },
@@ -32,10 +32,10 @@ print(
     transpose: true,
     renderCell: (value, rowIdx, colIdx) => {
       if (rowIdx === 2) {
-        return `<color apply="red.bold">${value}</color>`;
+        return `<color code="red.bold">${value}</color>`;
       }
       if (colIdx === 1) {
-        return `<color apply="yellow.bold">${value}</color>`;
+        return `<color code="yellow.bold">${value}</color>`;
       }
       return value;
     },

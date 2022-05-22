@@ -17,7 +17,7 @@ export default function waitFor(
   const judge = typeof condition === 'function' ? condition : () => false;
   const {
     timeout = 5000,
-    timeoutMsg = '<status type="warning">[TIMEOUT]</status> waiting timeout...',
+    timeoutMsg = '<color code="warning">[TIMEOUT]</color> waiting timeout...',
     interval = 500,
   } = options || {};
 
@@ -36,7 +36,7 @@ export default function waitFor(
       }
 
       const flag = await Promise.resolve(judge()).catch((e: Error) => {
-        print(`<status type="error">[ERROR]</status> ${e}`, true);
+        print(`<color code="error">[ERROR]</color> ${e}`, true);
 
         if (timeoutId) {
           clearTimeout(timeoutId);
